@@ -25,3 +25,37 @@
  * 6. Wywołanie metody z liczbami ujemnymi powinno zwrócić błąd: "Dozwolone są tylko liczby naturalne"
  * 7. Liczby większe niż 1000 powinny być ignorowane.
  */
+export class Calc {
+  constructor() {}
+
+  add(numbersString) {
+    if (numbersString === "") {
+      return 0;
+    }
+    let arr = numbersString.split(/[,\n]/g, 3);
+    let numArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      numArr.push(parseFloat(arr[i]));
+    }
+    const hasNegative = numArr.some(x => x < 0);
+    if (hasNegative) {
+      throw Error`only naural`;
+    }
+    for (let i = 0; i < numArr.length; i++) {
+      if (numArr[i] > 1000) {
+        numArr[i] = 0;
+      }
+    }
+    let [a, b, c] = numArr;
+    if (a === undefined) {
+      a = 0;
+    }
+    if (b === undefined) {
+      b = 0;
+    }
+    if (c === undefined) {
+      c = 0;
+    }
+    return a + b + c;
+  }
+}
