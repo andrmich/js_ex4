@@ -59,3 +59,4 @@ export class Calc {
     return a + b + c;
   }
 }
+//const over = x => { return x > 1000 ? x = 0 : x = x;}
